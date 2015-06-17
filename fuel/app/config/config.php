@@ -24,7 +24,7 @@ return array(
 	 *
 	 * Set this to null to have it automatically detected.
 	 */
-	'base_url'  => 'http://fuelshop.net',
+	'base_url'  => 'http://fuelshop.net/',
 
 	/**
 	 * url_suffix - Any suffix that needs to be added to
