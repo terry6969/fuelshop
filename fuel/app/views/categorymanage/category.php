@@ -30,7 +30,7 @@
 	</style>
 </head>
 <body>
-	<form class='test' action='/backyard/category' method='POST'>
+	<form class='test' action='/categorymanage/category' method='POST'>
 		<input type='text' name='cr' id='cr'>
 		<input type='submit' value='登録' id='cr_b'>
 	</form>
@@ -47,7 +47,7 @@
 					<?php echo $value['name']; ?>
 				</td>
 				<td>
-					<form action='/backyard/category' method='POST'>
+					<form action='/categorymanage/category' method='POST'>
 						<input type='submit' value='削除' id='delete_c'>
 						<input type='hidden' value='<?php echo $value['id']; ?>' id='c_id' name='c_id'>
 					</form>
