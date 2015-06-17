@@ -8,7 +8,9 @@ class Controller_Zaikomanage extends Controller{
 	 * 在庫管理
 	 */
 	public function action_index(){
-		Response::redirect('/shop/show_comp');
+		$view = View::forge('zaikomanage/zaiko_index_view');
+		$view->set('zaiko_data', Zaiko::getZaiko());
+		return $view;
 	}
 
 
