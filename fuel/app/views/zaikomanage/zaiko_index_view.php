@@ -8,21 +8,21 @@
 <body>
 	<div class="container" style="margin-top:100px;">
 		<div class="row">
-			<form action="/zaikomanage/zaiko_regist" method="POST">
+			<form action="/zaikomanage/zaiko_regist" method="POST" data-toggle="validator">
 				<?php if(isset($msg)): ?>
-				<span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:#FF0000;float:left;"></span><span style="color:#FF0000;float:left;"><?php echo $msg; ?></span>
+				<span class="glyphicon glyphicon-ok text-success" aria-hidden="true" style="float:left;"></span><span class="text-success" style="float:left;"><?php echo $msg; ?></span>
 				<?php endif; ?>
 				<input class="btn btn-success" type="submit" value="更新" style="float:right;margin-bottom:10px;">
 				<table class="table table-hover">
 					<tr>
-						<th style="width:400px;">商品名</th>
+						<th style="width:70%;">商品名</th>
 						<th>在庫数</th>
 					</tr>
 					
 					<?php foreach ($zaiko_data as $key => $value): ?>
 					<tr>
 						<td><?php echo $value['name'] ?></td>
-						<td><input type="text" value="<?php echo $value['count'] ?>" name="zaiko[<?php echo $value['id'] ?>]"></td>
+						<td><input class="form-control" type="text" value="<?php echo $value['count'] ?>" name="zaiko[<?php echo $value['id'] ?>]" pattern="^[0-9]+$" maxlength="11" required></td>
 					</tr>
 					<?php endforeach; ?>
 				</table>
