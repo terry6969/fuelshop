@@ -13,11 +13,11 @@
 		<input type="submit" value="カートを見る">	
 	</form>
 <!-- トップへ戻るボタン -->
-	<form action="/top/show_top" method="POST" onsubmit="">
+	<form action="/cart/show_top" method="POST" onsubmit="">
 		<input type="submit" value="トップへ戻る">	
 	</form>
 <!-- ログアウトボタン -->
-	<form action="/shop/logout" method="POST" onsubmit="return confirm_logout()">
+	<form action="/cart/logout" method="POST" onsubmit="return confirm_logout()">
 		<input type="submit" value="ログアウト">	
 	</form>
 	
@@ -27,6 +27,6 @@
 	<br>画像　名前　金額　個数 カテゴリ<br><br>
 	<br><br>
 	合計金額　：<br><br>
-	<form action="/shop/sell" method="POST" onsubmit="return confirm_sell()">
+	<form action="/cart/sell" method="POST" onsubmit="return confirm_sell()">
 		<input type="submit" value="購入">	
 	</form>
