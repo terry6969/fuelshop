@@ -9,15 +9,15 @@
 ?>
 
 <!-- カートを見るボタン -->
-	<form action="/shop/show_cart" method="POST" onsubmit="">
+	<form action="/cart/show_cart" method="POST" onsubmit="">
 		<input type="submit" value="カートを見る">	
 	</form>
 <!-- トップへ戻るボタン -->
-	<form action="/shop/show_top" method="POST" onsubmit="">
+	<form action="/cart/show_top" method="POST" onsubmit="">
 		<input type="submit" value="トップへ戻る">	
 	</form>
 <!-- ログアウトボタン -->
-	<form action="/shop/logout" method="POST" onsubmit="return confirm_logout()">
+	<form action="/cart/logout" method="POST" onsubmit="return confirm_logout()">
 		<input type="submit" value="ログアウト">	
 	</form>
 	
