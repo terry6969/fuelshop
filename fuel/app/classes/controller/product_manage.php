@@ -3,7 +3,7 @@
 use \Model\Product;
 use \Model\Category;
 
-class Controller_Productmanage extends Controller{
+class Controller_Backyard extends Controller{
 
 	public function action_show_regist_item(){
 		$res = Category::get_category();

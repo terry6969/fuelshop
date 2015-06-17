@@ -5,7 +5,6 @@
 	<title>商品管理</title>
 </head>
 <body>
-	<input type="button" value="新規" onclick="location.href='/backyard/show_regist_item'">
-
+	<input type="button" value="新規" onclick="location.href='/productmanage/show_regist_item'">
 </body>
 </html>

@@ -5,7 +5,7 @@
 	<title>商品登録</title>
 </head>
 <body>
-	<form action="/backyard/regist_item" method="POST">
+	<form action="/productmanage/regist_item" method="POST">
 	<table>
 		<tr>
 			<td>
