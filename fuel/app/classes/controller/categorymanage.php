@@ -12,7 +12,7 @@ class Controller_Categorymanage extends Controller{
 			Category::delete_category(Input::post('c_id'));
 		}
 		$res = Category::get_category();
-		$view = View::forge('category_manage/category_v');
+		$view = View::forge('categorymanage/category');
 		$view->set('res',$res,false);
 		return $view;
 	}

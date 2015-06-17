@@ -23,46 +23,45 @@ class Controller_Cart extends Controller{
 	 */
 	public function action_show_top(){
 		$res = Category::get_category();
-		$view = View::forge('shop/top');
+		$view = View::forge('top/top');
 		$view -> set('cc', $res, false);
 		return $view;
-		//return View::forge('shop/top');
 	}
 /////////////////////////////////////////////////////////
 	/**
 	 *Veiw商品詳細画面表示Controller
 	 */
 	public function action_show_item(){
-		return View::forge('shop/item');
+		return View::forge('top/item');
 	}
 /////////////////////////////////////////////////////////
 	/**
 	 *Veiwカート画面表示Controller
 	 */
 	public function action_show_cart(){
-		return View::forge('shop/cart');
+		return View::forge('cart/cart');
 	}
 /////////////////////////////////////////////////////////
 	/**
 	 *Veiw購入完了画面表示Controller
 	 */
 	public function action_show_comp(){
-		return View::forge('shop/comp');
+		return View::forge('cart/comp');
 	}
 /////////////////////////////////////////////////////////
 	/**
-	 *ログアウトController(済)
+	 *ログアウトController
 	 */
 	public function action_logout(){
 		Session::delete('session');
-		Response::redirect('/shop/show_login');
+		Response::redirect('/login/show_login');
 	}
 /////////////////////////////////////////////////////////
 	/**
 	 *購入用Controller
 	 */
 	public function action_sell(){
-		Response::redirect('/shop/show_comp');
+		Response::redirect('/cart/show_comp');
 	}
 /////////////////////////////////////////////////////////
 

@@ -10,20 +10,20 @@
 ?>
 
 <!-- カートを見るボタン -->
-	<form action="/shop/show_cart" method="POST" onsubmit="">
+	<form action="/top/show_cart" method="POST" onsubmit="">
 		<input type="submit" value="カートを見る">	
 	</form>
 <!-- トップへ戻るボタン -->
-	<form action="/shop/show_top" method="POST" onsubmit="">
+	<form action="/top/show_top" method="POST" onsubmit="">
 		<input type="submit" value="トップへ戻る">	
 	</form>
 <!-- ログアウトボタン -->
-	<form action="/shop/logout" method="POST" onsubmit="return confirm_logout()">
+	<form action="/top/logout" method="POST" onsubmit="return confirm_logout()">
 		<input type="submit" value="ログアウト">	
 	</form>
 
 <!-- 商品検索条件 -->
-	<form action="/shop/c_search" method="post">
+	<form action="/top/c_search" method="post">
 <!-- 在庫ラジオBOX -->
 		<p>在庫：
 			<input type="radio" name="r1" value="some"> あり
@@ -51,7 +51,7 @@
 
 		<tr>
 			<td>画像</td>
-			<td><a href="/shop/show_cart">商品</a></td>
+			<td><a href="/cart/show_cart">商品</a></td>
 			<td>カテゴリ</td>
 		</tr>
 	</table>
