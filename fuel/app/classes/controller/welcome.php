@@ -55,4 +55,15 @@ class Controller_Welcome extends Controller
 	{
 		return Response::forge(Presenter::forge('welcome/404'), 404);
 	}
+
+	/**
+	 * The 404 action for the application.
+	 *
+	 * @access  public
+	 * @return  Response
+	 */
+	public function action_test(){
+		echo 'ok';
+		exit;
+	}
 }
