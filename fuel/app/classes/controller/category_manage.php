@@ -2,7 +2,7 @@
 
 use \Model\Category;
 
-class Controller_Backyard extends Controller{
+class Controller_Categorymanage extends Controller{
 
 	public function action_category(){
 		if(Input::post('cr')){
@@ -12,8 +12,8 @@ class Controller_Backyard extends Controller{
 			Category::delete_category(Input::post('c_id'));
 		}
 		$res = Category::get_category();
-		$view = View::forge('backyard/category_v');
-		$view -> set('res',$res,false);
+		$view = View::forge('category_manage/category_v');
+		$view->set('res',$res,false);
 		return $view;
 	}
 }
