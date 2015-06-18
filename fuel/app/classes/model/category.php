@@ -16,4 +16,4 @@ class Category extends \Model{
 	public static function delete_category($id){
 		\DB::delete('category_tb')->where('id','=',$id)->execute();
 	}
-
+}

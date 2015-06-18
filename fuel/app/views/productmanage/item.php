@@ -10,7 +10,7 @@
 			height:100px;
 			position:absolute;
 			left:50%;
-			top:50%;
+			top:20%;
 			margin-left:-150px;
 			margin-top:-50px;
 		}
