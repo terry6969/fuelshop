@@ -5,7 +5,7 @@
 	<title>商品登録</title>
 </head>
 <body>
-	<form action="/productmanage/regist_item" method="POST">
+	<form action="/productmanage/regist_item" method="POST" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>
@@ -22,7 +22,7 @@
 			<td>
 				<select name="item_c">
 					<?php foreach ($res as $value): ?>
-						<option value="<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
+						<option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</td>
@@ -45,7 +45,10 @@
 		</tr>
 		<tr>
 			<td>
-				画像：
+				画像:
+			</td>
+			<td>
+				<input type="file" name="item_img">
 			</td>
 		</tr>
 		<tr>
