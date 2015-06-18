@@ -5,17 +5,17 @@ use \Model\Product;
 
 class Controller_Top extends Controller{
 
-	public function before(){
-		$_isLogin = Session::get('islogin');
+// 	public function before(){
+// 		$_isLogin = Session::get('islogin');
 		
-		if($_isLogin !== true){
-			Response::redirect('login');
-		}
-	}
+// 		if($_isLogin !== true){
+// 			Response::redirect('login');
+// 		}
+// 	}
 
-	/**
-	 *Veiw商品一覧画面表示Controller
-	 */
+// 	/**
+// 	 *Veiw商品一覧画面表示Controller
+// 	 */
 
 	public function action_show_top(){
 		$um =Product::join_cate_pro();
@@ -72,7 +72,6 @@ class Controller_Top extends Controller{
 		}	
 	}
 //////////////////////////////////////////////////////////
-=======
 	public function action_index(){
 		$_category_list = Category::get_category();
 		$view = View::forge('top/top');
