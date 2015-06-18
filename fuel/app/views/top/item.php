@@ -21,18 +21,18 @@
 		<input type="submit" value="ログアウト">	
 	</form>
 	
-	<br>画像<br><br>
-	<br>説明<br><br>
-	<br>カテゴリ<br><br>
-	<br>金額<br><br>
-	<br>
-	<form action="/shop/show_cart" method="POST" onsubmit="">
-	個数
-	<input type="number" name="example1" value="1" min="0" max="9">個
-	<input type="submit" value="購入">
+		<br>画像<br><br>
+		<br>説明<br><br>
+		<br>カテゴリ<br><br>
+		<br>金額<br><br><br>
+
+	<form action="/top/show_cart" method="POST" onsubmit="">
+		個数
+		<input type="number" name="num" value="1" min="0" max="">個
+		<input type="submit" value="カートに入れる">
 	</form>
 <!-- 戻るボタン -->
-	<form action="/shop/show_top" method="POST" onsubmit="">
+	<form action="/top/show_top" method="POST" onsubmit="">
 		<input type="submit" value="戻る">	
 	</form>
 

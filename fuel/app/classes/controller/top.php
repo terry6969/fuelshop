@@ -18,7 +18,7 @@ class Controller_Top extends Controller{
 // 	 */
 
 	public function action_show_top(){
-		$um =Product::join_cate_pro();
+		$um =Product::get_items();
 		$_category_list = Category::get_Category();
 		$view = View::forge('top/top');
 		$view->set('item_list', $um, false);
@@ -30,7 +30,12 @@ class Controller_Top extends Controller{
 	 *Veiw商品詳細画面表示Controller
 	 */
 	public function action_show_item(){
-		return View::forge('top/item');
+		$um =Product::get_items();
+		$view = View::forge('top/item');
+		$view->set('item_list', $um, false);
+		return $view;
+		//GETで送られてきたIDを参照して各項目を表示
+		
 	}
 /////////////////////////////////////////////////////////
 	/**
@@ -57,10 +62,6 @@ class Controller_Top extends Controller{
 			if($_POST['category'] == 'c_all') {
 				/*結果１*/Response::redirect('top/show_top');	 		
 			}else{
-				// $res_1 =Product::join_cate_pro();
-				// $res_1 =View::forge('top/top');
-				// $res_1->set('res', $res_1, false);
-				// return $res_1;
 				/*結果2*/echo "ポストのカテゴリをセレクトしてその全てを返す";
 			}
 		}elseif ($_POST['stock'] == 's_only') {

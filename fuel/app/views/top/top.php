@@ -57,7 +57,7 @@
 	<?php foreach ($item_list as $value){ ?>
 		<tr>
 			<td>画像</td>
-			<td><a href="/top/show_item"><?php echo $value['product_name']; ?></a></td>
+			<td><a href="/top/show_item?id=<?php echo $value['id']?>"><?php echo $value['product_name']; ?></a></td>
 			<td><?php echo $value['category_name']; ?></td>
 				<?php } ?>
 		</tr>
