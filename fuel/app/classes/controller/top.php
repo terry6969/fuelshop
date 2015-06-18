@@ -4,24 +4,19 @@ use \Model\Category;
 use \Model\Product;
 
 class Controller_Top extends Controller{
-/////////////////////////////////////////////////////////
-	/**
-	 *セッションbefore
-	 */	
-	//public function before(){
-		// $session = Session::get('session');
-		// $seg =Uri::segment(2);
-		// if($session == NULL && strpos($seg, "login") === FALSE){
-		// 	Response::redirect('shop/show_login');
-		// }elseif($session !== NULL && $seg == 'show_login'){
-		// 	Response::redirect('shop/top');
-		// }	
-	//}
-/////////////////////////////////////////////////////////
+
+	public function before(){
+		$_isLogin = Session::get('islogin');
+		
+		if($_isLogin !== true){
+			Response::redirect('login');
+		}
+	}
 
 	/**
 	 *Veiw商品一覧画面表示Controller
 	 */
+
 	public function action_show_top(){
 		$um =Product::join_cate_pro();
 		$_category_list = Category::get_Category();
@@ -77,5 +72,19 @@ class Controller_Top extends Controller{
 		}	
 	}
 //////////////////////////////////////////////////////////
+=======
+	public function action_index(){
+		$_category_list = Category::get_category();
+		$view = View::forge('top/top');
+		$view -> set('category_list', $_category_list, false);
+
+
+		$res_product = Product::get_product(Input::post('s_category'), Input::post('s_zaiko'));
+		$view -> set('product_list', $res_product, false);
+
+
+		return $view;
+	}
+
 
 }

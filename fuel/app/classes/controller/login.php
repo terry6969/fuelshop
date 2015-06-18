@@ -3,53 +3,47 @@
 use \Model\User;
 
 class Controller_Login extends Controller{
-/////////////////////////////////////////////////////////
-	/**
-	 *セッションbefore
-	 */	
-	//public function before(){
-		// $session = Session::get('session');
-		// $seg =Uri::segment(2);
-		// if($session == NULL && strpos($seg, "login") === FALSE){
-		// 	Response::redirect('shop/show_login');
-		// }elseif($session !== NULL && $seg == 'show_login'){
-		// 	Response::redirect('shop/top');
-		// }	
-	//}
-/////////////////////////////////////////////////////////
+
+
+
 	/**
 	 *Veiwログイン画面表示Controller
 	 */
-	public function action_show_login(){
-		return View::forge('login/login');
-	}
-/////////////////////////////////////////////////////////
-	/**
-	 *Veiw商品一覧画面表示Controller
-	 */
-	public function action_show_top(){
-		$res = Category::get_category();
-		$view = View::forge('top/top');
-		$view -> set('cc', $res, false);
+	public function action_index(){
+		$view = View::forge('login/login');
+		$view->set_global('islogin_page', true);
 		return $view;
-		//return View::forge('shop/top');
 	}
-/////////////////////////////////////////////////////////
 
 	/**
 	 *ログイン用Controller
 	 */
 	public function action_login(){
-		$res =User::login_user(Input::post('id'),Input::post('pass'));
+		$res = User::login_user(Input::post('id'),Input::post('pass'));
 		if (count($res) == 0) {
-			$e_msg = View::forge('login/login');
-			$e_msg->set('msg', 'ログイン失敗');
-			return $e_msg;
+			echo 'ng';
+
+			$view = View::forge('login/login');
+			$view->set('msg', 'ログイン失敗です');
+			return $view;
 		}else{
-			Session::set('session',1);
-			Response::redirect('top/show_top');
+			echo 'ok';
+			$this->action_index();
+			Session::set('islogin',true);
+			Session::set('user_name',$res[0]['name']);
+			Session::set('user_money',$res[0]['money']);
+			Response::redirect('top');
 		}
 	}
-/////////////////////////////////////////////////////////
+
+	/**
+	 *ログアウト用Controller
+	 */
+	public function action_logout(){
+		Session::delete('islogin');
+		Session::delete('user_name');
+		Session::delete('user_money');
+		Response::redirect('login');
+	}
 }
 ?>
