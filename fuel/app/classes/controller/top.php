@@ -57,10 +57,10 @@ class Controller_Top extends Controller{
 			if($_POST['category'] == 'c_all') {
 				/*結果１*/Response::redirect('top/show_top');	 		
 			}else{
-				$res_1 =Product::join_cate_pro();
-				$res_1 =View::forge('top/top');
-				$res_1->set('res', $res_1, false);
-				return $res_1;
+				// $res_1 =Product::join_cate_pro();
+				// $res_1 =View::forge('top/top');
+				// $res_1->set('res', $res_1, false);
+				// return $res_1;
 				/*結果2*/echo "ポストのカテゴリをセレクトしてその全てを返す";
 			}
 		}elseif ($_POST['stock'] == 's_only') {
