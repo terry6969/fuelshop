@@ -1,6 +1,7 @@
 <?php
 
 use \Model\Category;
+use \Model\Product;
 
 class Controller_Top extends Controller{
 /////////////////////////////////////////////////////////
@@ -22,11 +23,12 @@ class Controller_Top extends Controller{
 	 *Veiw商品一覧画面表示Controller
 	 */
 	public function action_show_top(){
-		$res = Category::get_category();
+		$um =Product::join_cate_pro();
+		$_category_list = Category::get_Category();
 		$view = View::forge('top/top');
-		$view -> set('cc', $res, false);
+		$view->set('item_list', $um, false);
+		$view->set('category_list', $_category_list,false);
 		return $view;
-		//return View::forge('shop/top');
 	}
 /////////////////////////////////////////////////////////
 	/**
@@ -56,18 +58,24 @@ class Controller_Top extends Controller{
 	 *カテゴリ検索用Controller
 	 */
 	public function action_c_search(){
-		
+		if ($_POST['stock'] == 's_all'){
+			if($_POST['category'] == 'c_all') {
+				/*結果１*/Response::redirect('top/show_top');	 		
+			}else{
+				$res_1 =Product::join_cate_pro();
+				$res_1 =View::forge('top/top');
+				$res_1->set('res', $res_1, false);
+				return $res_1;
+				/*結果2*/echo "ポストのカテゴリをセレクトしてその全てを返す";
+			}
+		}elseif ($_POST['stock'] == 's_only') {
+			if($_POST['category'] == 'c_all') {
+				/*結果3*/echo"zaiko_tb.count　!==0 でないものを返す";
+			}else{
+				/*結果4*/echo "ポストのカテゴリをセレクトかつ、zaiko_tb.count　!==0でないものを返す";
+			}
+		}	
 	}
-/////////////////////////////////////////////////////////
-	/**
-	 *一覧表示用Controller
-	 */
-	static function join_cate_pro(){
-		$join = DB::select()->from('category_tb');
-		$join->join('product_tb');
-	
-	}
-/////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 }
-?>

@@ -22,23 +22,28 @@
 		<input type="submit" value="ログアウト">	
 	</form>
 
+
+
+
 <!-- 商品検索条件 -->
 	<form action="/top/c_search" method="post">
 <!-- 在庫ラジオBOX -->
 		<p>在庫：
-			<input type="radio" name="r1" value="some"> あり
-			<input type="radio" name="r1" value="all" checked> 全て
+			<input type="radio" name="stock" value="s_only"> あり
+			<input type="radio" name="stock" value="s_all" checked> 全て
 		</p>
-
-
-		<select name="category" method="post">
 <!-- カテゴリプルダウン -->
-	<?php foreach ($cc as $value){ ?>
-		<option value="category"><?php echo $value['name']; ?></option>
-	<?php } ?>
-
-		</select>	</form>
+		<select name="category" method="post">
+		<option value="c_all">全て</option>
+			<?php foreach ($category_list as $value){ ?>
+		<option value="<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
+			<?php } ?>
+		</select>
 		<input type="submit" value="検索">
+	</form>
+
+
+
 
 
 <!-- 商品一覧 -->
@@ -48,13 +53,19 @@
 			<td>商品</td>
 			<td>カテゴリ</td>
 		</tr>
-
+	<?php foreach ($item_list as $value){ ?>
 		<tr>
 			<td>画像</td>
-			<td><a href="/cart/show_cart">商品</a></td>
-			<td>カテゴリ</td>
+			<td><a href="/top/show_item"><?php echo $value['product_name']; ?></a></td>
+			<td><?php echo $value['category_name']; ?></td>
+				<?php } ?>
 		</tr>
 	</table>
 
 </body>
 </html>
+
+<?php
+
+
+?>
