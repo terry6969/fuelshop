@@ -10,7 +10,7 @@ class Product extends \Model{
 	}
 
 	public static function get_product(){
-		$query = \DB::select('product_tb.id',array('product_tb.name','product_tb_name'),'category_tb.name')->from('product_tb');
+		$query = \DB::select('product_tb.id',array('product_tb.name','product_tb_name'),'category_tb.name')->from('product_tb')->order_by('product_tb.id','ASC');
 		$query->join('category_tb','INNER');
 		$query->on('product_tb.category_tb_id','=','category_tb.id');
 		$res = $query->execute();
