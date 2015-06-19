@@ -30,12 +30,22 @@ class Controller_Top extends Controller{
 	 *Veiw商品詳細画面表示Controller
 	 */
 	public function action_show_item(){
-		$um =Product::get_items();
-		$view = View::forge('top/item');
-		$view->set('item_list', $um, false);
-		return $view;
+		$id = Input::get('id');
+		$target = Product::get_item_one($id);
+		if(count($target) == 0){
+			Response::redirect('top/top');
+		}else{
+			$view = View::forge('top/item');
+			$view->set('target', $target[0], false);
+			return $view;
+		}
+
+		// $um =Product::get_items();
+		// $view = View::forge('top/item');
+		// $view->set('item_list', $um, false);
+		// return $view;
 		//GETで送られてきたIDを参照して各項目を表示
-		
+
 	}
 /////////////////////////////////////////////////////////
 	/**
