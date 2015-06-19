@@ -18,11 +18,13 @@ class Controller_Top extends Controller{
 // 	 */
 
 	public function action_show_top(){
-		$um =Product::get_items();
-		$_category_list = Category::get_Category();
+		$item_list =Product::get_items();
+		$category_list = Category::get_Category();
 		$view = View::forge('top/top');
-		$view->set('item_list', $um, false);
-		$view->set('category_list', $_category_list,false);
+		$view->set('item_list', $item_list, false);
+		$view->set('category_list', $category_list,false);
+		$res_product = Product::get_product(Input::post('category'), Input::post('stock'));
+		$view -> set('product_list', $res_product, false);
 		return $view;
 	}
 /////////////////////////////////////////////////////////
