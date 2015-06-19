@@ -1,33 +1,10 @@
 
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Itemページ</title>
-</head>
-<body>
-<?php
-	echo Asset::js('shop.js'); 
+<?php echo View::forge('inc/header'); ?>
 
-?>
-
-<!-- カートを見るボタン -->
-	<form action="/top/show_cart" method="POST" onsubmit="">
-		<input type="submit" value="カートを見る">	
-	</form>
-<!-- トップへ戻るボタン -->
-	<form action="/top/show_top" method="POST" onsubmit="">
-		<input type="submit" value="トップへ戻る">	
-	</form>
-<!-- ログアウトボタン -->
-	<form action="/top/logout" method="POST" onsubmit="return confirm_logout()">
-		<input type="submit" value="ログアウト">	
-	</form>
-
-
-
+<?php echo Asset::js('shop.js'); ?>
 
 <!-- 商品検索条件 -->
-	<form action="/top/show_top" method="post">
+	<form action="/top/top" method="post">
 <!-- 在庫ラジオBOX -->
 		<p>在庫：
 			<input type="radio" name="stock" id="stock" value="some"> あり
@@ -41,9 +18,7 @@
 			<?php } ?>
 		</select>
 		<input type="submit" value="検索">
-	</form>
-
-
+	</form><br>
 <!-- 商品一覧 -->
 <table class="tablecollor" border="1">
 		<tr>
@@ -54,17 +29,11 @@
 	<?php foreach ($item_list as $value){ ?>
 		<tr>
 			<td>画像</td>
-			<td><a href="/top/show_item?id=<?php echo $value['id']?>"><?php echo $value['product_name']; ?></a></td>
+			<td><a href="/top/item?id=<?php echo $value['id']?>"><?php echo $value['product_name']; ?></a></td>
 			<td><?php echo $value['category_name']; ?></td>
 	<?php } ?>
-	
 		</tr>
 	</table>
 
-</body>
-</html>
+<?php echo View::forge('inc/footer'); ?>
 
-<?php
-
-
-?>

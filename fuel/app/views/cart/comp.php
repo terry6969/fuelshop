@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Compページ</title>
+	<title>Thx!!</title>
 </head>
 <body>
 購入完了しました。

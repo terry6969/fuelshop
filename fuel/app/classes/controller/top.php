@@ -5,18 +5,18 @@ use \Model\Product;
 
 class Controller_Top extends Controller{
 
-// 	public function before(){
-// 		$_isLogin = Session::get('islogin');
+	// public function before(){
+	// 	$_isLogin = Session::get('islogin');
 		
-// 		if($_isLogin !== true){
-// 			Response::redirect('login');
-// 		}
-// 	}
+	// 	if($_isLogin !== true){
+	// 		Response::redirect('login/show_login');
+	// 	}
+	// }
 /////////////////////////////////////////////////////////
 	/**
 	 *Veiw商品一覧画面表示Controller
 	 */
-	public function action_show_top(){
+	public function action_top(){
 		$category_list = Category::get_category();
 		$view = View::forge('top/top');
 		$view->set('category_list', $category_list,false);
@@ -28,7 +28,7 @@ class Controller_Top extends Controller{
 	/**
 	 *Veiw商品詳細画面表示Controller
 	 */
-	public function action_show_item(){
+	public function action_item(){
 		$id = Input::get('id');
 		$target = Product::get_item_one($id);
 		$view = View::forge('top/item');
@@ -37,23 +37,6 @@ class Controller_Top extends Controller{
 
 	}
 /////////////////////////////////////////////////////////
-	/**
-	 *Veiwカート画面表示Controller
-	 */
-	public function action_show_cart(){
-		return View::forge('cart/cart');
-	}
-
-/////////////////////////////////////////////////////////
-	/**
-	 *ログアウトController
-	 */
-	public function action_logout(){
-		Session::delete('session');
-		Response::redirect('/login/show_login');
-	}
-/////////////////////////////////////////////////////////
-
 
 
 }

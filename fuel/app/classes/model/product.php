@@ -50,8 +50,7 @@ class Product extends \Model{
 		return $res;
 	}
 
-	
-	
+
 	public static function get_item_one($id){
 		$query =\DB::select('product_tb.id', 
 			array('product_tb.name', 'name'), 
