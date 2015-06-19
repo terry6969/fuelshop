@@ -1,6 +1,7 @@
 <?php
 
 use \Model\User;
+use \Model\buylog;
 
 class Controller_Usermanage extends Controller{
 
@@ -45,5 +46,11 @@ class Controller_Usermanage extends Controller{
 	public function action_user_update(){
 		User::update_user(Input::post());
 		Response::redirect('usermanage/index');
+	}
+
+	public function action_show_user_log(){
+		$view = View::forge('usermanage/shop_log');
+		$view->set('res',Buylog::get_log(Input::post('id_log')),false);
+		return $view;
 	}
 }
