@@ -49,14 +49,21 @@ class Product extends \Model{
 		$res = $query->execute();
 		return $res;
 	}
+
+	
 	
 	public static function get_item_one($id){
-		$query =\DB::select('product_tb.id', array('product_tb.name', 'product_name'), array('category_tb.name', 'category_name'))->from('product_tb');
+		$query =\DB::select('product_tb.id', 
+			array('product_tb.name', 'name'), 
+			array('product_tb.price', 'price'), 
+			array('zaiko_tb.count', 'zaiko'), 
+			array('category_tb.name', 'category'))
+		->from('product_tb');
 		$query ->join('category_tb', 'INNER');
 		$query ->on('product_tb.category_tb_id', '=', 'category_tb.id');
 		$query ->join('zaiko_tb', 'INNER');
 		$query ->on('product_tb.id', '=', 'zaiko_tb.product_tb_id');
-		$res = $query->execute();
+		$res = $query->where('product_tb.id', '=', $id)->execute();
 		return $res;
 		}
 
