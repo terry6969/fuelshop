@@ -25,40 +25,6 @@ class Product extends \Model{
 		return \DB::select(\DB::expr('MAX(`id`)'))->from('product_tb')->execute();
 	}
 
-	// public static function get_product($category, $zaiko){
-	// 	$query = \DB::select('product_tb.*',array('category_tb.name','category_name'))->from('product_tb');
-	// 	$query->join('category_tb', 'INNER');
-	// 	$query->on('product_tb.category_tb_id', '=', 'category_tb.id');
-	// 	$query->join('zaiko_tb', 'INNER');
-	// 	$query->on('product_tb.id', '=', 'zaiko_tb.product_tb_id');
-	// 	if($zaiko == 1){
-	// 		$query->where('zaiko_tb.count', '>', 0);
-	// 	}
-	// 	if($category != 0){
-	// 		$query->where('category_tb.id', '=', $category);
-	// 	}
-
-	// 	$res = $query->execute();
-	// 	return $res;
-	// }
-
-
-	public static function get_items(){
-		$query =\DB::select('product_tb.id', array('product_tb.name', 'product_name'), array('category_tb.name', 'category_name'))->from('product_tb');
-		$query ->join('category_tb', 'INNER');
-		$query ->on('product_tb.category_tb_id', '=', 'category_tb.id');
-		$query ->join('zaiko_tb', 'INNER');
-		$query ->on('product_tb.id', '=', 'zaiko_tb.product_tb_id');
-		$res = $query->execute();
-		return $res;
-	}
-
-	public static function get_item_one($id){
-		
-
-		
-	}
-
 	public static function target_product($id){
 		return \DB::select()->from('product_tb')->where('id','=',$id)->execute();
 	}
@@ -67,4 +33,40 @@ class Product extends \Model{
 		$updata = array('name'=>$data['item_n'],'category_tb_id'=>$data['item_c'],'descripion'=>$data['item_d'],'price'=>$data['item_p']);
 		return \DB::update('product_tb')->set($updata)->where('id','=',$data['id_h'])->execute();
 	}
+
+	public static function get_search($category, $stock){
+		$query = \DB::select('product_tb.*',array('product_tb.name', 'product_name'),array('category_tb.name','category_name'))->from('product_tb');
+		$query->join('category_tb', 'INNER');
+		$query->on('product_tb.category_tb_id', '=', 'category_tb.id');
+		$query->join('zaiko_tb', 'INNER');
+		$query->on('product_tb.id', '=', 'zaiko_tb.product_tb_id');
+		if($stock == 'some'){
+			$query->where('zaiko_tb.count', '>', 0);
+		}
+		if($category != 'c_all'){
+			$query->where('category_tb.name', '=', $category);
+		}
+		$res = $query->execute();
+		return $res;
+	}
+
+	
+	
+	public static function get_item_one($id){
+		$query =\DB::select('product_tb.id', 
+			array('product_tb.name', 'name'), 
+			array('product_tb.price', 'price'), 
+			array('zaiko_tb.count', 'zaiko'), 
+			array('category_tb.name', 'category'))
+		->from('product_tb');
+		$query ->join('category_tb', 'INNER');
+		$query ->on('product_tb.category_tb_id', '=', 'category_tb.id');
+		$query ->join('zaiko_tb', 'INNER');
+		$query ->on('product_tb.id', '=', 'zaiko_tb.product_tb_id');
+		$res = $query->where('product_tb.id', '=', $id)->execute();
+		return $res;
+		}
+
+
+
 }
