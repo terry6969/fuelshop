@@ -80,10 +80,10 @@ return array(
 	'file_chmod'		=> 0777,
 
 	// if true, add a number suffix to the file if the file already exists
-	'auto_rename'		=> true,
+	'auto_rename'		=> false,
 
 	// if true, overwrite the file if it already exists (only if auto_rename = false)
-	'overwrite'			=> false,
+	'overwrite'			=> true,
 
 	// if true, generate a random filename for the file being saved
 	'randomize'			=> false,

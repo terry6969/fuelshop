@@ -58,4 +58,13 @@ class Product extends \Model{
 
 		
 	}
+
+	public static function target_product($id){
+		return \DB::select()->from('product_tb')->where('id','=',$id)->execute();
+	}
+
+	public static function update_product($data){
+		$updata = array('name'=>$data['item_n'],'category_tb_id'=>$data['item_c'],'descripion'=>$data['item_d'],'price'=>$data['item_p']);
+		return \DB::update('product_tb')->set($updata)->where('id','=',$data['id_h'])->execute();
+	}
 }

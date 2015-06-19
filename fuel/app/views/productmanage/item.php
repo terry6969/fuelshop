@@ -35,15 +35,9 @@
 		</tr>
 		<?php foreach ($res as $value): ?>
 		<tr>
-			<td>
-				<?php echo $value['id']; ?>
-			</td>
-			<td>
-				<?php echo $value['product_tb_name']; ?>
-			</td>
-			<td>
-				<?php echo $value['name']; ?>
-			</td>
+			<td><?php echo $value['id']; ?></td>
+			<td><a href="/productmanage/show_update_item?id=<?php echo $value['id']; ?>"><?php echo $value['product_tb_name']; ?></td>
+			<td><?php echo $value['name']; ?></td>
 			<td>
 			<form action="/productmanage/delete_item" method="POST">
 				<input type='submit' value='削除' id='delete_i'>
