@@ -27,11 +27,11 @@
 
 
 <!-- 商品検索条件 -->
-	<form action="/top/c_search" method="post">
+	<form action="/top/show_top" method="post">
 <!-- 在庫ラジオBOX -->
 		<p>在庫：
-			<input type="radio" name="stock" value="s_only"> あり
-			<input type="radio" name="stock" value="s_all" checked> 全て
+			<input type="radio" name="stock" id="stock" value="s_only"> あり
+			<input type="radio" name="stock" id="stock" value="s_all" checked> 全て
 		</p>
 <!-- カテゴリプルダウン -->
 		<select name="category" method="post">
