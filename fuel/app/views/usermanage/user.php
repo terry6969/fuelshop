@@ -45,8 +45,9 @@
 				</form>
 				</td>
 				<td>
-				<form>
+				<form action="/usermanage/show_user_log" method="POST">
 					<input type="submit" value="履歴" name="log_b" id="log_b">
+					<input type="hidden" value="<?php echo $value['id']; ?>" name="id_log" id="id_log">
 				</form>
 				</td>
 			</tr>
