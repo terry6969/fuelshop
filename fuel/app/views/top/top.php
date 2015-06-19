@@ -30,8 +30,8 @@
 	<form action="/top/show_top" method="post">
 <!-- 在庫ラジオBOX -->
 		<p>在庫：
-			<input type="radio" name="stock" id="stock" value="s_only"> あり
-			<input type="radio" name="stock" id="stock" value="s_all" checked> 全て
+			<input type="radio" name="stock" id="stock" value="some"> あり
+			<input type="radio" name="stock" id="stock" value="all" checked> 全て
 		</p>
 <!-- カテゴリプルダウン -->
 		<select name="category" method="post">
@@ -42,9 +42,6 @@
 		</select>
 		<input type="submit" value="検索">
 	</form>
-
-
-
 
 
 <!-- 商品一覧 -->
@@ -59,7 +56,8 @@
 			<td>画像</td>
 			<td><a href="/top/show_item?id=<?php echo $value['id']?>"><?php echo $value['product_name']; ?></a></td>
 			<td><?php echo $value['category_name']; ?></td>
-				<?php } ?>
+	<?php } ?>
+	
 		</tr>
 	</table>
 
