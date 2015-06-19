@@ -14,4 +14,21 @@ class User extends \Model{
 		$d = array('login_id'=>$data['user_i'],'login_pass'=>$data['user_p'],'name'=>$data['user_n'],'money'=>$data['user_z']);
 		\DB::insert('user_tb')->set($d)->execute();
 	}
+
+	public static function get_user(){
+		return \DB::select()->from('user_tb')->execute();
+	}
+
+	public static function delete_user($id){
+		\DB::delete('user_tb')->where('id','=',$id)->execute();
+	}
+
+	public static function target_user($id){
+		return \DB::select()->from('user_tb')->where('id','=',$id)->execute();
+	}
+
+	public static function update_user($data){
+		$updata = array('login_id'=>$data['user_i'],'login_pass'=>$data['user_p'],'name'=>$data['user_n'],'money'=>$data['user_z']);
+		\DB::update('user_tb')->set($updata)->where('id','=',$data['id_h'])->execute();
+	}
 }
