@@ -6,24 +6,17 @@ use \Model\Category;
 class Controller_Cart extends Controller{
 /////////////////////////////////////////////////////////
 	/**
-	 *セッションbefore
+	 *セッションチェックbefore
 	 */	
-	// public function before(){
-	// 	$_isLogin = Session::get('islogin');
+	public function before(){
+		$login = Session::get('login');
+		$seg =Uri::segment(2);
+		if($login == NULL && strpos($seg, "login") === FALSE){
+			Response::redirect('login/login');
+		}elseif($login !== NULL && $seg == 'login'){
+			Response::redirect('top/top');
+		}
 		
-	// 	if($_isLogin !== true){
-	// 		Response::redirect('login/show_login');
-	// 	}
-	// }
-/////////////////////////////////////////////////////////
-	/**
-	 *Veiw商品一覧画面表示Controller
-	 */
-	public function action_top(){
-		$res = Category::get_category();
-		$view = View::forge('top/top');
-		$view -> set('cc', $res, false);
-		return $view;
 	}
 /////////////////////////////////////////////////////////
 	/**

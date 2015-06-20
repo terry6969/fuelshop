@@ -4,14 +4,20 @@ use \Model\Category;
 use \Model\Product;
 
 class Controller_Top extends Controller{
-
-	// public function before(){
-	// 	$_isLogin = Session::get('islogin');
+/////////////////////////////////////////////////////////
+	/**
+	 *セッションチェックbefore
+	 */	
+	public function before(){
+		$login = Session::get('login');
+		$seg =Uri::segment(2);
+		if($login == NULL && strpos($seg, "login") === FALSE){
+			Response::redirect('login/login');
+		}elseif($login !== NULL && $seg == 'login'){
+			Response::redirect('top/top');
+		}
 		
-	// 	if($_isLogin !== true){
-	// 		Response::redirect('login/show_login');
-	// 	}
-	// }
+	}
 /////////////////////////////////////////////////////////
 	/**
 	 *Veiw商品一覧画面表示Controller
@@ -37,6 +43,21 @@ class Controller_Top extends Controller{
 
 	}
 /////////////////////////////////////////////////////////
-
+	/**
+	 *カートに入れる処理Controller
+	 */
+	public function action_in_cart(){
+		$id =Input::post('id');
+		$name =Input::post('name');
+		$price =Input::post('price');
+		$stock =Input::post('stock');
+		Session::set('i_id',$id);
+		Session::set('i_name',$name);
+		Session::set('i_price',$price);
+		Session::set('i_stock',$stock);
+		Response::redirect('cart/cart');
+	}
+	//セッションに詰め込んで表示させるかIDからserectして表示するか。（IDのが楽?）
+/////////////////////////////////////////////////////////
 
 }
