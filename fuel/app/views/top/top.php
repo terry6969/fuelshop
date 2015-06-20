@@ -38,4 +38,3 @@
 	</table>
 
 <?php echo View::forge('inc/footer'); ?>
-

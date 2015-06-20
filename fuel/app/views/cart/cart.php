@@ -2,16 +2,21 @@
 
 <?php
 	echo Asset::js('shop.js'); 
+	$total =$price * $stock;
 ?>
-
-	<br>画像　名前　金額　個数 カテゴリ<br><br>
-	<br>画像　名前　金額　個数 カテゴリ<br><br>
-	<br>画像　名前　金額　個数 カテゴリ<br><br>
+画像<?php print"$id"; ?>　　
+商品名<?php print"$name"; ?> 　　
+金額<?php print"$price"; ?>　　
+個数<?php print"$stock"; ?> 
+	<form action="/cart/del_item" method="POST" onsubmit="">
+		<input type="submit" value="削除">	
+	</form>　
+	　
 	<br><br>
-	合計金額　：<br><br>
-	<form action="/cart/sell" method="POST" onsubmit="return confirm_sell()">
+	合計金額　：<?php print"$total"; ?><br><br>
+	<form action="/cart/comp" method="POST" onsubmit="return confirm_sell()">
+	<input type="hidden" name="total" value="<?php print"$total"; ?>">
 		<input type="submit" value="購入">	
 	</form>
-
 
 <?php echo View::forge('inc/footer'); ?>

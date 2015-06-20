@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- ログイン用View -->
-<?php echo View::forge('inc/header'); ?>
+<?php echo View::forge('inc/header');
+	  echo Asset::js('shop.js');
+ ?>
 <html>
 <head>
 	<meta charset="UTF-8">

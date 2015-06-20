@@ -56,7 +56,7 @@ class Controller_Top extends Controller{
 		Session::set('i_price',$price);
 		Session::set('i_stock',$stock);
 		Response::redirect('cart/cart');
-	}
+	}//$userid = Session::get('userid')
 	//セッションに詰め込んで表示させるかIDからserectして表示するか。（IDのが楽?）
 /////////////////////////////////////////////////////////
 

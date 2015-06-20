@@ -29,3 +29,12 @@ function confirm_sell(){
 	return window.confirm("よろしいですか？");
 }
 ///////////////////////////////////////////////////////////////////
+/*カート用アラート*/
+function alert_cart(){
+	var stock = document.querySelector("#stock").value;
+		if(stock == 0){
+		window.alert('無いものは買えません');
+		return false;
+		}
+}
+///////////////////////////////////////////////////////////////////
