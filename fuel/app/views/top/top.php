@@ -1,7 +1,9 @@
 
 <?php echo View::forge('inc/header'); ?>
 
-<?php echo Asset::js('shop.js'); ?>
+<?php echo Asset::js('shop.js'); 
+
+?>
 
 <!-- 商品検索条件 -->
 	<form action="/top/top" method="post">
