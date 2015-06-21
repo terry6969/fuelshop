@@ -6,12 +6,12 @@
 	<style>
 		table{
 			border-collapse:collapse;
-			width:300px;
+			width:400px;
 			height:100px;
 			position:absolute;
 			left:50%;
 			top:20%;
-			margin-left:-150px;
+			margin-left:-200px;
 			margin-top:-50px;
 		}
 		td{
