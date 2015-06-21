@@ -1,43 +1,27 @@
 <?php echo View::forge('inc/manage_header'); ?>
 
-<?php echo Asset::js('bootstrap-datetimepicker.min.js'); ?>
-<?php echo Asset::css('bootstrap-datetimepicker.min.css'); ?>
 <div class="row" style="margin:20px; 0">
 	<input type="button" value="戻る" onclick="location.href='/usermanage'" class="btn btn-primary">
 </div>
 
 <div class="row" style="margin:20px; 0">
-	<form class="form-inline">
+	<form action="/usermanage/user_log" method="POST" class="form-inline">
 		<div class="form-group">
-			
-			<div class='input-group date' id='date_from' style="width:250px;">
-				<input type="text" class="form-control" placeholder="from" data-format="dd/MM/yyyy hh:mm:ss">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-calendar"></span>
-				</span>
-			</div>
-			<script type="text/javascript">
-	            $(function () {
-	                $('#date_from').datetimepicker();
-	            });
-	        </script>
+			<input type="date" class="form-control" placeholder="from" id="from" name="from" value="<?php echo (isset($from))?$from:'';?>">
 		</div>
 		〜
 		<div class="form-group">
-			
-			<div class='input-group date' id='date_to' style="width:250px;">
-				<input type="text" class="form-control" placeholder="to" data-format="dd/MM/yyyy hh:mm:ss">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-calendar"></span>
-				</span>
-			</div>
-			<script type="text/javascript">
-	            $(function () {
-	                $('#date_to').datetimepicker();
-	            });
-	        </script>
+			<input type="date" class="form-control" placeholder="to" id="to" name="to" value="<?php echo (isset($to))?$to:'';?>">
 		</div>
-		<input type="submit" value="検索" class="btn btn-info">
+		<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+		<input type="submit" value="検索" class="btn btn-warning">
+		<input type="button" value="クリア" class="btn btn-info" onclick="resetForm()">
+		<script>
+			function resetForm(){
+				$("#from").val("");
+				$("#to").val("");
+			}
+		</script>
 	</form>
 </div>
 <div class="row" style="margin:20px; 0">
@@ -58,6 +42,4 @@
 		<?php endforeach; ?>
 	</table>
 </div>
-
-
 <?php echo View::forge('inc/manage_footer'); ?>

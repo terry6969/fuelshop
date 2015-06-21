@@ -52,11 +52,30 @@ class Controller_Usermanage extends Controller{
 	}
 
 	public function action_user_log(){
-		$res = Buylog::get_buy_log_by_user_id(Input::get('user_id'));
 
 		$view = View::forge('usermanage/usermanage_log_view');
+		if(Input::get('user_id') !== NULL){
+			$user_id = Input::get('user_id');
+		}else if(Input::post('user_id') !== NULL){
+			$user_id = Input::post('user_id');
+		}else{
+			echo 'err';
+			exit;
+		}
+
+		$post = Input::post();
+
+		if(count($post) != 0 && ($post['from'] != "" || $post['to'] != "")){
+			$res = Buylog::get_buy_log_by_from_to($user_id, $post['from'], $post['to']);
+			$view->set('from',$post['from']);
+			$view->set('to',$post['to']);
+		}else{
+			$res = Buylog::get_buy_log_by_user_id($user_id);
+			
+		}
+
 		$view->set('log_list',$res,false);
-		
+		$view->set('user_id',$user_id);
 		return $view;
 	}
 
