@@ -32,8 +32,8 @@
 	</div>
 </div>
 	<div class="row">
-		<?php foreach($product_list as $product): ?>
-			<table class="table table-hover">
+		<table class="table table-hover">
+			<?php foreach($product_list as $product): ?>
 				<tr>
 					<td style="width:150px;">
 						<div style="width:100px;height:100px;border:solid 1px #000;">画像</div>
@@ -41,8 +41,8 @@
 					<td><?php echo $product['name'] ?></td>
 					<td><?php echo $product['category_name'] ?></td>
 				</tr>
-			</table>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
+		</table>
 	</div>
 
 	

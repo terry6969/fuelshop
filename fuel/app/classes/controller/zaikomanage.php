@@ -30,7 +30,14 @@ class Controller_Zaikomanage extends Controller{
 		Response::redirect('/zaikomanage?msg=1');
 	}
 
-
+	public function after($response){
+		$response->set_global('title', '在庫管理');
+		$response->set_global('category_class', '');
+		$response->set_global('product_class', '');
+		$response->set_global('zaiko_class', 'class=active');
+		$response->set_global('user_class', '');
+		return parent::after($response);
+	}
 }
 
 

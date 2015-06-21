@@ -22,7 +22,7 @@ class Controller_Top extends Controller{
 		$view -> set('category_list', $_category_list, false);
 
 
-		$res_product = Product::get_product(Input::post('s_category'), Input::post('s_zaiko'));
+		$res_product = Product::get_product_category_zaiko(Input::post('s_category'), Input::post('s_zaiko'));
 		$view -> set('product_list', $res_product, false);
 
 
