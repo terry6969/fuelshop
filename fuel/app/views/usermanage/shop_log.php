@@ -6,12 +6,12 @@
 	<style>
 		table{
 			border-collapse:collapse;
-			width:300px;
+			width:400px;
 			height:100px;
 			position:absolute;
 			left:50%;
 			top:20%;
-			margin-left:-150px;
+			margin-left:-200px;
 			margin-top:-50px;
 		}
 		td{
@@ -26,8 +26,8 @@
 </head>
 <body>
 	<form action="/usermanage/search_log" method="POST">
-		from<input type="text" name="date_f" id="date_f">
-		～to<input type="text" name="date_t" id="date_t"><br><br>
+		from<input type="text" name="date_f" id="date_f" value="<?php echo (isset($from))?$from:''; ?>">
+		～to<input type="text" name="date_t" id="date_t" value="<?php echo (isset($to))?$to:''; ?>"><br><br>
 		<input type="submit" value="検索" name="search_b" id="search_b">
 	</form>
 

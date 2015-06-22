@@ -27,6 +27,16 @@
 			border:solid 1px;
 			padding:0.5em;
 		}
+		th{
+			border:solid 1px;
+			padding:0.5em;
+		}
+		input#cr_b{
+			color:blue;
+		}
+		input#delete_c{
+			color:red;
+		}
 	</style>
 </head>
 <body>
@@ -35,18 +45,18 @@
 		<input type='submit' value='登録' id='cr_b'>
 	</form>
 	<table>
-		<tr>
-			<td>
+		<tr align="center">
+			<th>
 				カテゴリー名
-			</td>
+			</th>
 		</tr>
 
 		<?php foreach ($res as $value): ?>
-			<tr>
+			<tr align="center">
 				<td>
 					<?php echo $value['name']; ?>
 				</td>
-				<td>
+				<td width="100">
 					<form action='/categorymanage/category' method='POST'>
 						<input type='submit' value='削除' id='delete_c'>
 						<input type='hidden' value='<?php echo $value['id']; ?>' id='c_id' name='c_id'>

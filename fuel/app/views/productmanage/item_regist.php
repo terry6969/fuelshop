@@ -16,22 +16,35 @@ if (isset($target)){
 <head>
 	<mate charset="utf-8">
 	<title>商品登録</title>
+	<style>
+		table{
+			width:330px;
+			height:200px;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-top:-100px;
+			margin-left:-165px;
+		}
+		th{
+			width:100px;
+		}
+		input#item_r{
+			width:80px;
+		}
+	</style>
 </head>
 <body>
 	<form action="<?php echo $url; ?>" method="POST" enctype="multipart/form-data">
 	<table>
 		<tr>
-			<td>
-				商品名:
-			</td>
+			<th>商品名:</th>
 			<td>
 				<input name="item_n" type="text" id="item_n" value="<?php echo ($mode == 1)?$target['name']:''; ?>">
 			</td>
 		</tr>
 		<tr>
-			<td>
-				カテゴリー:
-			</td>
+			<th>カテゴリー:</th>
 			<td>
 				<select name="item_c">
 					<?php foreach ($res as $value): ?>
@@ -44,31 +57,26 @@ if (isset($target)){
 			</td>
 		</tr>
 		<tr>
+			<th>説明:</th>
 			<td>
-				説明:
-			</td>
-			<td>
-				<input type="text" id="item_d" name="item_d" value="<?php echo ($mode == 1)?$target['descripion']:''; ?>">
+				<textarea id="item_d" name="item_d"><?php echo ($mode == 1)?$target['descripion']:''; ?></textarea>
 			</td>
 		</tr>
 		<tr>
-			<td>
-				金額:
-			</td>
+			<th>金額:</th>
 			<td>
 				<input type="text" id="item_p" name="item_p" value="<?php echo ($mode == 1)?$target['price']:''; ?>">
 			</td>
 		</tr>
 		<tr>
-			<td>
-				画像:
-			</td>
+			<th>画像:</th>
 			<td>
 				<input type="file" name="item_img">
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td></td>
+			<td align="right">
 				<?php if ($mode == 1){ ?>
 					<input type="hidden" value="<?php echo $target['id']; ?>" name="id_h" id="id_h">
 				<?php } ?>
