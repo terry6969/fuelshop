@@ -30,11 +30,12 @@ class Controller_Top extends Controller{
 		if (Input::post('stock') == 'some'){
 			$res_product = Product::get_search(Input::post('category'), Input::post('stock'));
 			$view -> set('item_list', $res_product, false);
-		// }if(Input::post('stock') == 'all' && Input::post('category') !== NULL){
-		// 	var_dump(Input::post('category'));
+		}else if(Input::post('stock') == 'all' && Input::post('category') !== 'c_all'){
+			$view -> set('item_list', Product::category_search_list(Input::post('category')), false);
 		}else{
 			$view -> set('item_list', Product::top_list(), false);
 		}
+		
 		return $view;
 	}
 /////////////////////////////////////////////////////////
