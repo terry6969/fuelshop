@@ -58,7 +58,7 @@ class Product extends \Model{
 	public static function get_item_one($id){
 		$query =\DB::select('product_tb.id', 
 			array('product_tb.name', 'name'),
-			array('product_tb.description', 'description'), 
+			array('product_tb.descripion', 'descripion'), 
 			array('product_tb.price', 'price'), 
 			array('zaiko_tb.count', 'zaiko'), 
 			array('category_tb.name', 'category'))

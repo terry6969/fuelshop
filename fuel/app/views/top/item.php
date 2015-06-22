@@ -11,7 +11,7 @@
 
 				<br><?php echo Asset::img('uploads/'.$value['id'].'.jpg', array('width'=>'100')); ?><br><br>
 				<br>商品名<br><?php echo $value['name']; ?><br><br>
-				<br>説明<br><?php echo $value['description']; ?><br><br>
+				<br>説明<br><?php echo $value['descripion']; ?><br><br>
 				<br>カテゴリ<br><?php echo $value['category']; ?><br><br>
 				<br>値段<br><?php echo $value['price']; ?>　円<br><br><br>	
 
