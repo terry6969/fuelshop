@@ -49,8 +49,24 @@ class Controller_Usermanage extends Controller{
 	}
 
 	public function action_show_user_log(){
+		Session::set('logid',Input::post('id_log'));
 		$view = View::forge('usermanage/shop_log');
 		$view->set('res',Buylog::get_log(Input::post('id_log')),false);
 		return $view;
+		
+	}
+	public function action_search_log(){
+		$from = Input::post('date_f');
+		$to = Input::post('date_t');
+		
+		if ($from == NULL || $from == '' and $to == NULL || $to == ''){
+			$view = View::forge('usermanage/shop_log');
+			$view->set('res',Buylog::get_log(Session::get('logid')),false);
+			return $view;
+		}else{
+			$view = View::forge('usermanage/shop_log');
+			$view->set('res',Buylog::fromto_log(Session::get('logid'),$from,$to),false);
+			return $view;
+		}
 	}
 }

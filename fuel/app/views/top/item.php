@@ -11,6 +11,7 @@
 
 				<br>画像ID:<?php echo $value['id']; ?><br><br>
 				<br>商品名<br><?php echo $value['name']; ?><br><br>
+				<br>説明<br><?php echo $value['description']; ?><br><br>
 				<br>カテゴリ<br><?php echo $value['category']; ?><br><br>
 				<br>値段<br><?php echo $value['price']; ?>　円<br><br><br>	
 

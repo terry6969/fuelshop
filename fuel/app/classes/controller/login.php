@@ -40,9 +40,7 @@ class Controller_Login extends Controller{
 			$view->set('msg', 'ログイン失敗');
 			return $view;
 		}else{
-			//$this->action_top();
 			Session::set('login',$res[0]['id']);
-			Session::set('name',$res[0]['name']);
 			Session::set('money',$res[0]['money']);
 			Response::redirect('top/top');
 		}
@@ -53,8 +51,13 @@ class Controller_Login extends Controller{
 	 */
 	public function action_logout(){
 		Session::delete('login');
-		Session::delete('name');
 		Session::delete('money');
+		Session::delete('cart');
+		// Session::delete('i_id');
+		// Session::delete('i_name');
+		// Session::delete('i_price');
+		// Session::delete('i_stock');
+		
 		Response::redirect('login/login');
 	}
 }

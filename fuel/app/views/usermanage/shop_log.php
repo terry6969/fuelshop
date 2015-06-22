@@ -25,10 +25,11 @@
 	</style>
 </head>
 <body>
-<?php echo var_dump($res); ?>
-	from<input type="text" name="date_f" id="date_f">
-	～to<input type="text" name="date_t" id="date_t"><br><br>
-	<input type="submit" value="検索" name="search_b" id="search_b">
+	<form action="/usermanage/search_log" method="POST">
+		from<input type="text" name="date_f" id="date_f">
+		～to<input type="text" name="date_t" id="date_t"><br><br>
+		<input type="submit" value="検索" name="search_b" id="search_b">
+	</form>
 
 	<table>
 		<tr>
@@ -37,6 +38,14 @@
 			<th>個数</th>
 			<th>金額</th>
 		</tr>
+		<?php foreach ($res as $value): ?>
+		<tr>
+			<td><?php echo $value['created']; ?></td>
+			<td><?php echo $value['name']; ?></td>
+			<td><?php echo $value['count']; ?></td>
+			<td><?php echo ($value['price']*$value['count']); ?></td>
+		</tr>
+		<?php endforeach; ?>
 	</table>
 </body>
 </html>

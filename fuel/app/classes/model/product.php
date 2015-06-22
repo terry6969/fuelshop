@@ -35,7 +35,11 @@ class Product extends \Model{
 	}
 
 	public static function get_search($category, $stock){
-		$query = \DB::select('product_tb.*',array('product_tb.name', 'product_name'),array('category_tb.name','category_name'))->from('product_tb');
+		$query = \DB::select('product_tb.*',
+			array('product_tb.name', 'product_name'),
+			array('category_tb.name','category_name'),
+			array('product_tb.price', 'price'))
+		->from('product_tb');
 		$query->join('category_tb', 'INNER');
 		$query->on('product_tb.category_tb_id', '=', 'category_tb.id');
 		$query->join('zaiko_tb', 'INNER');
@@ -53,7 +57,8 @@ class Product extends \Model{
 
 	public static function get_item_one($id){
 		$query =\DB::select('product_tb.id', 
-			array('product_tb.name', 'name'), 
+			array('product_tb.name', 'name'),
+			array('product_tb.description', 'description'), 
 			array('product_tb.price', 'price'), 
 			array('zaiko_tb.count', 'zaiko'), 
 			array('category_tb.name', 'category'))

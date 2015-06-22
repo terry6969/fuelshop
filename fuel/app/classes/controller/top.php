@@ -51,13 +51,28 @@ class Controller_Top extends Controller{
 		$name =Input::post('name');
 		$price =Input::post('price');
 		$stock =Input::post('stock');
-		Session::set('i_id',$id);
-		Session::set('i_name',$name);
-		Session::set('i_price',$price);
-		Session::set('i_stock',$stock);
+		$total =$price * $stock;
+			$_cart =Session::get('cart');
+			if(!is_array($_cart)){
+			 $_cart = array();
+			}
+			$_cart[] = array(
+			 'i_id' => $id,
+			 'i_name' => $name,
+			 'i_price' => $price,
+			 'i_stock' => $stock,
+			 'total' => $total
+			 );
+			Session::set('cart',$_cart);
+
+		
+		// Session::set('i_id',$id);
+		// Session::set('i_name',$name);
+		// Session::set('i_price',$price);
+		// Session::set('i_stock',$stock);
 		Response::redirect('cart/cart');
-	}//$userid = Session::get('userid')
-	//セッションに詰め込んで表示させるかIDからserectして表示するか。（IDのが楽?）
+			
+	}
 /////////////////////////////////////////////////////////
 
 }
