@@ -69,8 +69,13 @@ class Product extends \Model{
 		$query ->on('product_tb.id', '=', 'zaiko_tb.product_tb_id');
 		$res = $query->where('product_tb.id', '=', $id)->execute();
 		return $res;
-		}
+	}
 
-
-
+	public static function top_list(){
+		$query = \DB::select('product_tb.id',array('product_tb.name','product_name'),'product_tb.price',array('category_tb.name','category_name'))->from('product_tb');
+		$query->join('category_tb','INNER');
+		$query->on('product_tb.category_tb_id','=','category_tb.id');
+		$res = $query->execute();
+		return $res;
+	}
 }

@@ -19,7 +19,7 @@
 		<option value="<?php echo $value['name']; ?>"><?php echo $value['name']; ?></option>
 			<?php } ?>
 		</select>
-		<input type="submit" value="検索">
+		<input type="submit" value="検索" name="search_b" id="search_b">
 	</form><br>
 <!-- 商品一覧 -->
 <table class="tablecollor" border="1">
