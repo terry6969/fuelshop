@@ -26,8 +26,15 @@ class Controller_Top extends Controller{
 		$category_list = Category::get_category();
 		$view = View::forge('top/top');
 		$view->set('category_list', $category_list,false);
-		$res_product = Product::get_search(Input::post('category'), Input::post('stock'));
-		$view -> set('item_list', $res_product, false);
+
+		if (Input::post('stock') == 'some'){
+			$res_product = Product::get_search(Input::post('category'), Input::post('stock'));
+			$view -> set('item_list', $res_product, false);
+		// }if(Input::post('stock') == 'all' && Input::post('category') !== NULL){
+		// 	var_dump(Input::post('category'));
+		}else{
+			$view -> set('item_list', Product::top_list(), false);
+		}
 		return $view;
 	}
 /////////////////////////////////////////////////////////
