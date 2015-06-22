@@ -16,6 +16,13 @@ class Zaiko extends \Model{
 		$data = array("count"=>$count);
 		\DB::update('zaiko_tb')->set($data)->where('id', '=', $id)->execute();
 	}
+///////////////////////////////////////////////////////////////////////////////////////
+	public static function delete_stock($id,$res_stock){
+			$xx = array('count'=>$res_stock);
+			\DB::update('zaiko_tb')->set($xx)->where('id','=',$id)->execute();
+	}
 
-
+	public static function target_zaiko($id){
+			return \DB::select()->from('zaiko_tb')->where('product_tb_id','=',$id)->execute();
+	}
 }
