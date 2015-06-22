@@ -53,10 +53,10 @@ class Controller_Login extends Controller{
 		Session::delete('login');
 		Session::delete('money');
 		Session::delete('cart');
-		// Session::delete('i_id');
-		// Session::delete('i_name');
-		// Session::delete('i_price');
-		// Session::delete('i_stock');
+		Session::delete('i_id');
+		Session::delete('i_name');
+		Session::delete('i_price');
+		Session::delete('i_stock');
 		
 		Response::redirect('login/login');
 	}

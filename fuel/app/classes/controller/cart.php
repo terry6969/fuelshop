@@ -62,21 +62,18 @@ class Controller_Cart extends Controller{
 	 *商品削除Controller
 	 */
 	public function action_del_item(){
-		Session::delete('i_id');
-		Session::delete('i_name');
-		Session::delete('i_price');
-		Session::delete('i_stock');
-		Response::redirect('cart/cart');
+		$del_num =Input::post('del');
+		$target =session::get('cart');
+		unset($target[$del_num]);
+		//Response::redirect('cart/cart');
+		var_dump($target[$del_num]);
 	}
 /////////////////////////////////////////////////////////
 	/**
 	 *購入完了Controller
 	 */
 	public function action_comp(){
-		Session::delete('i_id');
-		Session::delete('i_name');
-		Session::delete('i_price');
-		Session::delete('i_stock');
+		Session::delete('cart');
 		return View::forge('cart/comp');
 
 	}
