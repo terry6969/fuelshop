@@ -64,9 +64,11 @@ class Controller_Cart extends Controller{
 	public function action_del_item(){
 		$del_num =Input::post('del');
 		$target =session::get('cart');
-		unset($target[$del_num]);
-		//Response::redirect('cart/cart');
-		var_dump($target[$del_num]);
+		Session::delete('cart.'.$del_num.'');
+		//unset($target[$del_num]);
+		//session::set('cart',$test)
+		Response::redirect('cart/cart');
+		
 	}
 /////////////////////////////////////////////////////////
 	/**

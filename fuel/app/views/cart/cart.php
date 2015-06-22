@@ -34,11 +34,7 @@
 
 	<br><br>
 	<form action="/cart/sell" method="POST" onsubmit="return confirm_sell()">
-		<input type="hidden" name="id" value="<?php print"$id"; ?>">
-		<input type="hidden" name="name" value="<?php print"$name"; ?>">
-		<input type="hidden" name="price" value="<?php print"$price"; ?>">
-		<input type="hidden" name="stock" value="<?php print"$stock"; ?>">
-		<input type="hidden" name="total" value="<?php print"$total"; ?>">
+
 		<input type="submit" value="購入">	
 	</form>
 <?php } ?>
