@@ -78,4 +78,12 @@ class Product extends \Model{
 		$res = $query->execute();
 		return $res;
 	}
+
+	public static function category_search_list($c){
+		$query = \DB::select('product_tb.id',array('product_tb.name','product_name'),'product_tb.price',array('category_tb.name','category_name'))->from('product_tb');
+		$query->join('category_tb','INNER');
+		$query->on('product_tb.category_tb_id','=','category_tb.id');
+		$res = $query->where('category_tb.name','=',$c)->execute();
+		return $res;
+	}
 }
