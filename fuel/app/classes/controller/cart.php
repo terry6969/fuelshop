@@ -2,7 +2,8 @@
 
 use \Model\User;
 use \Model\Category;
-use \Model\Hinan;
+use \Model\zeiko;
+use \Model\buylog;
 
 class Controller_Cart extends Controller{
 /////////////////////////////////////////////////////////
@@ -41,22 +42,25 @@ class Controller_Cart extends Controller{
 	 *購入Controller
 	 */
 	 public function action_sell(){
-	 	$total =Input::post('total');
-	 	$buy_count =Input::post('stock');
+	 	$total =Input::post('sum');
+	 	//$buy_count =Input::post('stock');
 	 	$money =session::get('money');
+	 	$xx =session::get('cart[0]');
 		if ($money <= $total) {
 			echo "残高不足です";
-		}else{
-		$stock = Hinan::zaiko_target_zaiko(Input::post('id'));
-		foreach ($stock as $val) {
-			$stock_all =$val['count'];
-			$res_stock =$stock_all - $buy_count;
-			Hinan::zaiko_delete_stock(Input::post('id'),$res_stock);
-		}
-			Hinan::buylog_user_buy(Input::post('id'),Input::post('stock'),session::get('login'));
-			Response::redirect('cart/comp');
-		}
-	}
+		}var_dump($xx)
+		//else{
+		// 	$stock = Zaiko::target_zaiko(Input::post('id'));
+		// 	foreach ($stock as $val) {
+		// 		$stock_all =$val['count'];
+		// 		$res_stock =$stock_all - $buy_count;
+		// 		Zaiko::delete_stock(Input::post('id'),$res_stock);
+		// }
+		// 	Buylog::user_buy(Input::post('id'),Input::post('stock'),session::get('login'));
+		// 	Response::redirect('cart/comp');
+		// }
+		
+	
 /////////////////////////////////////////////////////////
 	/**
 	 *商品削除Controller
@@ -65,8 +69,6 @@ class Controller_Cart extends Controller{
 		$del_num =Input::post('del');
 		$target =session::get('cart');
 		Session::delete('cart.'.$del_num.'');
-		//unset($target[$del_num]);
-		//session::set('cart',$test)
 		Response::redirect('cart/cart');
 		
 	}
@@ -81,13 +83,8 @@ class Controller_Cart extends Controller{
 	}
 /////////////////////////////////////////////////////////
 /*残り作業
-1)商品の削除ボタン
-2)検索結果のデフォルト(答えあり)
 4)残高不足だった時の処理(js？)
-5)見た目の改善
 6)buylogでのdate関数の追加
 */
-
-
 }
 ?>
