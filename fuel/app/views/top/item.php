@@ -9,7 +9,7 @@
 			<input type="hidden" name="name" value="<?php echo $value['name']; ?>">
 			<input type="hidden" name="price" value="<?php echo $value['price']; ?>">
 
-				<br>画像ID:<?php echo $value['id']; ?><br><br>
+				<br><?php echo Asset::img('uploads/'.$value['id'].'.jpg', array('width'=>'100')); ?><br><br>
 				<br>商品名<br><?php echo $value['name']; ?><br><br>
 				<br>説明<br><?php echo $value['description']; ?><br><br>
 				<br>カテゴリ<br><?php echo $value['category']; ?><br><br>

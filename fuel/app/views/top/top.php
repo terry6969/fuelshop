@@ -31,7 +31,7 @@
 		</tr>
 	<?php foreach ($item_list as $value){ ?>
 		<tr>
-			<td>画像</td>
+			<td><?php echo Asset::img('uploads/'.$value['id'].'.jpg', array('width'=>'50')); ?></td>
 			<td><a href="/top/item?id=<?php echo $value['id']?>"><?php echo $value['product_name']; ?></a></td>
 			<td><?php echo $value['price']; ?></td>
 			<td><?php echo $value['category_name']; ?></td>
