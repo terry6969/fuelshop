@@ -31,4 +31,8 @@ class User extends \Model{
 		$updata = array('login_id'=>$data['user_i'],'login_pass'=>$data['user_p'],'name'=>$data['user_n'],'money'=>$data['user_z']);
 		\DB::update('user_tb')->set($updata)->where('id','=',$data['id_h'])->execute();
 	}
+	public static function after_buy($money,$id){
+		$up =array('money'=>$money);
+		\DB::update('user_tb')->set($up)->where('id','=',$id)->execute();
+	}
 }

@@ -2,7 +2,7 @@
 
 use \Model\User;
 use \Model\Category;
-use \Model\zeiko;
+use \Model\zaiko;
 use \Model\buylog;
 
 class Controller_Cart extends Controller{
@@ -45,22 +45,30 @@ class Controller_Cart extends Controller{
 	 	$total =Input::post('sum');
 	 	//$buy_count =Input::post('stock');
 	 	$money =session::get('money');
-	 	$xx =session::get('cart[0]');
+	 	$xx =session::get('cart');
 		if ($money <= $total) {
 			echo "残高不足です";
-		}var_dump($xx)
-		//else{
-		// 	$stock = Zaiko::target_zaiko(Input::post('id'));
-		// 	foreach ($stock as $val) {
-		// 		$stock_all =$val['count'];
-		// 		$res_stock =$stock_all - $buy_count;
-		// 		Zaiko::delete_stock(Input::post('id'),$res_stock);
-		// }
-		// 	Buylog::user_buy(Input::post('id'),Input::post('stock'),session::get('login'));
-		// 	Response::redirect('cart/comp');
-		// }
+		}else{
+			$c =count($xx);
+			for ($i=0; $i < $c; $i++) { 
+			 	$stock = Zaiko::target_zaiko($xx[$i]['i_id']);
+				$stock_all =$stock[0]['count'];
+				$buy_count = $xx[$i]['i_stock'];
+				$res_stock =$stock_all - $buy_count;
+				//var_dump($res_stock);
+				Zaiko::update_stock($xx[$i]['i_id'],$res_stock);
+			 
+				Buylog::user_buy($xx[$i]['i_id'],$buy_count,session::get('login'));
+
+				$ss =$money - $total;
+
+				User::after_buy($ss,session::get('login'));
+				Response::redirect('cart/comp');
+
+			}
+		}
 		
-	
+	}
 /////////////////////////////////////////////////////////
 	/**
 	 *商品削除Controller

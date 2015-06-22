@@ -23,9 +23,9 @@ class Buylog extends \Model{
 		$res = $query->execute();
 		return $res;
 	}
-
+/////////////////////////////////////////////////////////////////////////////////////
 	public static function user_buy($id,$count,$user_id){
-		$yy =array('user_tb_id'=>$user_id,'product_id'=>$id,'count'=>$count);
+		$yy =array('user_tb_id'=>$user_id,'product_id'=>$id,'count'=>$count,'created'=>date("Y-m-d H:i:s"));
 		\DB::insert('buy_log_tb')->set($yy)->execute();
 	}
 }
